@@ -19,7 +19,7 @@ import useSearch from './search.hook'
 
 const SearchComponent = () => {
   const hook = useSearch()
-  const { isLoading, setIsloading } = hook
+  const { isLoading } = hook
   return (
     <>
       <div
