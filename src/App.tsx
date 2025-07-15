@@ -1,7 +1,8 @@
-import { RouterProvider } from "react-router";
-import "./App.css";
-import { router } from "./router";
-import { ThemeProvider } from "./components/theme-provider";
+import { RouterProvider } from 'react-router'
+
+import './App.css'
+import { ThemeProvider } from './components/theme-provider'
+import { router } from './router'
 
 function App() {
   return (
@@ -10,7 +11,7 @@ function App() {
         <RouterProvider router={router}></RouterProvider>
       </ThemeProvider>
     </>
-  );
+  )
 }
 
-export default App;
+export default App

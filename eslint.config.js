@@ -14,10 +14,19 @@ export default tseslint.config([
       tseslint.configs.recommended,
       reactHooks.configs['recommended-latest'],
       reactRefresh.configs.vite,
+          "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
+    "plugin:react-hooks/recommended",
     ],
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
     },
+      rules: {
+    "react/prop-types": 0,
+    "no-unused-vars": ["error", { varsIgnorePattern: "^_" }],
+    "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
+  },
   },
 ])
