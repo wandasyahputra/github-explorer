@@ -1,5 +1,4 @@
 import { Accordion } from '@/components/ui/accordion'
-import { ScrollArea } from '@/components/ui/scroll-area'
 
 import LoadingOverlay from '../components/loading-overlay'
 import SearchInput from '../components/search-input'
@@ -15,7 +14,7 @@ const SearchComponent = () => {
         className={`relative mx-auto max-h-[95vh] w-[600px] overflow-hidden rounded-xl shadow-xl duration-500 dark:shadow-white ${
           isLoading ? 'min-h-86' : 'min-h-5'
         }`}>
-        <SearchInput />
+        <SearchInput {...hook} />
         <div className="noscrollbar overflow-auto px-4 py-3">
           <div className="max-h-[65vh]">
             <Accordion
