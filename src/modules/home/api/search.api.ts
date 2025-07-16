@@ -1,13 +1,11 @@
 import { objectToParams } from '@/lib/utils'
 import voyager from '@/lib/voyager'
 
-import type { UserSearchResponse } from '../type/search.type'
-
-type SearchUserPropsType = {
-  key: string
-  page?: number
-  perPage: number
-}
+import type { RepoPropsType, RepoResponse } from '../type/repo.type'
+import type {
+  SearchUserPropsType,
+  UserSearchResponse,
+} from '../type/search.type'
 
 const fetchSearchUser = async ({
   key,
@@ -25,4 +23,19 @@ const fetchSearchUser = async ({
   })
 }
 
-export { fetchSearchUser }
+const fetchRepo = async ({
+  username,
+  page = 1,
+  perPage,
+}: RepoPropsType): Promise<RepoResponse> => {
+  const params = objectToParams({
+    page,
+    per_page: perPage,
+  })
+  const path = `users/${username}/repos?${params}`
+  return voyager.get<RepoResponse>(path).then((res) => {
+    return res.data
+  })
+}
+
+export { fetchSearchUser, fetchRepo }

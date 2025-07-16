@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import { Accordion } from '@/components/ui/accordion'
 
 import LoadingOverlay from '../components/loading-overlay'
@@ -8,6 +10,7 @@ import useSearch from './search.hook'
 const SearchComponent = () => {
   const hook = useSearch()
   const { isLoading, getSearchUser } = hook
+  const [activeAccordion, setActiveAccordion] = useState<string | null>(null)
   return (
     <>
       <div
@@ -20,12 +23,13 @@ const SearchComponent = () => {
             <Accordion
               type="single"
               collapsible
-              onValueChange={(e) => console.log(e)}
+              onValueChange={setActiveAccordion}
               className="w-full space-y-2">
               {getSearchUser?.data?.items?.map((x, index) => (
                 <UserAccordion
                   key={index}
                   {...x}
+                  isActive={activeAccordion === x.login}
                 />
               ))}
             </Accordion>

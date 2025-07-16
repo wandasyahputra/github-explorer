@@ -2,4 +2,8 @@ const searchUserParams = {
   perPage: 5,
 }
 
-export { searchUserParams }
+const repoParams = {
+  perPage: 10,
+}
+
+export { searchUserParams, repoParams }
