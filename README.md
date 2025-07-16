@@ -27,8 +27,8 @@ A web application to explore GitHub repositories and users, built with React, Ty
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/gitHub-explorer.git
-cd gitHub-explorer
+git clone https://github.com/wandasyahputra/github-explorer
+cd github-explorer
 
 # Install dependencies
 npm install
