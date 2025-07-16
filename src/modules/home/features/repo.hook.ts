@@ -1,4 +1,4 @@
-import { useInfiniteQuery, useQuery } from '@tanstack/react-query'
+import { useInfiniteQuery } from '@tanstack/react-query'
 
 import { fetchRepo } from '../api/search.api'
 import type { UserItem } from '../type/search.type'

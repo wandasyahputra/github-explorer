@@ -10,9 +10,12 @@ const RepoCard = (props: RepoItem) => {
         <a
           href={html_url}
           target="_blank"
-          className="flex w-4/5 items-center gap-2">
+          aria-label={`open ${name} on a new tab `}
+          className="flex max-w-4/5 items-center gap-2">
           <span className="truncate font-bold">{name}</span>
-          <button className="cursor-pointer">
+          <button
+            aria-label={`open ${name} on a new tab `}
+            className="cursor-pointer">
             <ExternalLink className="h-4 w-4" />
           </button>
         </a>

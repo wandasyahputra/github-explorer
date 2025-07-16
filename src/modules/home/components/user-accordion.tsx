@@ -1,4 +1,5 @@
-import { useEffect, useRef } from 'react'
+import { SearchX } from 'lucide-react'
+import { useEffect } from 'react'
 
 import {
   AccordionContent,
@@ -10,6 +11,7 @@ import { Skeleton } from '@/components/ui/skeleton'
 
 import useRepo from '../features/repo.hook'
 import type { UserItem } from '../type/search.type'
+import EmptyState from './empty-state'
 import RepoCard from './repo-card'
 
 const UserAccordion = (props: UserItem & { isActive: boolean }) => {
@@ -45,7 +47,7 @@ const UserAccordion = (props: UserItem & { isActive: boolean }) => {
   return (
     <AccordionItem
       value={login}
-      className="border-b-0 px-3 py-1">
+      className="mb-2 border-b-0 px-3 py-1">
       <div className="bg-secondary w-full gap-3 rounded-lg px-4 text-lg font-bold">
         <AccordionTrigger className="w-full items-center py-2 hover:no-underline">
           <div className="flex items-center justify-start gap-2">
@@ -61,6 +63,7 @@ const UserAccordion = (props: UserItem & { isActive: boolean }) => {
         <ScrollArea
           className="relative h-[50vh] [&_.github-card-item]:w-[calc(100vw-120px)] [&_.github-card-item]:max-w-[544px]"
           id={`${login}-scroll-area`}>
+          {!getRepoByUser?.data?.pages[0]?.length ? <EmptyState /> : null}
           {getRepoByUser?.data?.pages?.flatMap((x) =>
             x?.map((y) => (
               <RepoCard
@@ -72,7 +75,7 @@ const UserAccordion = (props: UserItem & { isActive: boolean }) => {
           {getRepoByUser?.isFetching
             ? Array.from({ length: 3 }).map((_, index) => (
                 <Skeleton
-                  className="mb-2 h-20 w-full"
+                  className="w- mb-2 h-20"
                   key={index}
                 />
               ))

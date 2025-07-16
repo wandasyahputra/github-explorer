@@ -17,7 +17,7 @@ const SearchInput = ({
       <input
         className="w-full focus:outline-none dark:placeholder-white/50"
         placeholder="Explore GitHub"
-        alt="Explore GitHub"
+        alt="Find GitHub user here"
         id="search-input"
         ref={inputRef}
         onKeyDown={(e) => {
@@ -28,6 +28,7 @@ const SearchInput = ({
       />
       <Button
         className="cursor-pointer"
+        aria-label="Find GitHub user"
         onClick={handleClickButton}>
         <ArrowRight className="h-4 w-4" />
       </Button>

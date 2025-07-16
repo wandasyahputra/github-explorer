@@ -36,6 +36,9 @@ const useSearch = () => {
   return {
     getSearchUser,
     isLoading: getSearchUser.isLoading,
+    isPaused: getSearchUser.isPaused,
+    isError: getSearchUser.isError,
+    refetch: getSearchUser.refetch,
     keySearch,
     setKeySearch,
     inputRef,
