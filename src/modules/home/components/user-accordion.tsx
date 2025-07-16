@@ -1,4 +1,3 @@
-import { SearchX } from 'lucide-react'
 import { useEffect } from 'react'
 
 import {
@@ -12,6 +11,7 @@ import { Skeleton } from '@/components/ui/skeleton'
 import useRepo from '../features/repo.hook'
 import type { UserItem } from '../type/search.type'
 import EmptyState from './empty-state'
+import ErrorState from './error-state'
 import RepoCard from './repo-card'
 
 const UserAccordion = (props: UserItem & { isActive: boolean }) => {
@@ -63,7 +63,10 @@ const UserAccordion = (props: UserItem & { isActive: boolean }) => {
         <ScrollArea
           className="relative h-[50vh] [&_.github-card-item]:w-[calc(100vw-120px)] [&_.github-card-item]:max-w-[544px]"
           id={`${login}-scroll-area`}>
-          {!getRepoByUser?.data?.pages[0]?.length ? <EmptyState /> : null}
+          {!getRepoByUser?.data?.pages[0]?.length &&
+          !getRepoByUser?.isFetching ? (
+            <EmptyState />
+          ) : null}
           {getRepoByUser?.data?.pages?.flatMap((x) =>
             x?.map((y) => (
               <RepoCard
@@ -72,6 +75,10 @@ const UserAccordion = (props: UserItem & { isActive: boolean }) => {
               />
             ))
           )}
+          {(getRepoByUser?.isError || getRepoByUser?.isPaused) &&
+          !getRepoByUser?.isFetching ? (
+            <ErrorState {...getRepoByUser} />
+          ) : null}
           {getRepoByUser?.isFetching
             ? Array.from({ length: 3 }).map((_, index) => (
                 <Skeleton

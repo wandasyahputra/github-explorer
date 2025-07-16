@@ -19,23 +19,33 @@ const ErrorOverlay = ({
         { 'opacity-100': isError || isPaused },
         { 'pointer-events-none opacity-0': !isError && !isPaused }
       )}>
-      {isPaused ? (
-        <div className="flex flex-col items-center gap-3">
-          <WifiOff className="h-16 w-16" />
-          <span>
-            It looks like you're offline, we'll try again when you're online.
-          </span>
-        </div>
-      ) : null}
-      {isError ? (
-        <div className="flex flex-col items-center gap-3">
-          <HeartCrack className="h-16 w-16" />
-          <span>Something went wrong, please try again</span>
-          <Button onClick={refetch}>Try Again</Button>
-        </div>
-      ) : null}
+      {isPaused ? <NoNetworkScreen /> : null}
+      {isError ? <ErrorScreen refetch={refetch} /> : null}
     </div>
   )
 }
+
+function NoNetworkScreen() {
+  return (
+    <div className="flex flex-col items-center gap-3">
+      <WifiOff className="h-16 w-16" />
+      <span>
+        It looks like you're offline, we'll try again when you're online.
+      </span>
+    </div>
+  )
+}
+
+function ErrorScreen({ refetch }: { refetch: () => void }) {
+  return (
+    <div className="flex flex-col items-center gap-3">
+      <HeartCrack className="h-16 w-16" />
+      <span>Something went wrong, please try again</span>
+      <Button onClick={refetch}>Try Again</Button>
+    </div>
+  )
+}
+
+export { NoNetworkScreen, ErrorScreen }
 
 export default ErrorOverlay

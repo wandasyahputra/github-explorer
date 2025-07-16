@@ -1,69 +1,79 @@
-# React + TypeScript + Vite
+# GitHub Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A web application to explore GitHub repositories and users, built with React, TypeScript, and Vite. This project demonstrates clean architecture, modular design, and a focus on user experience.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Search GitHub Repositories and Users**
+- **View Repository Details**
+- **User Profiles with Accordion UI**
+- **Fast, Responsive UI**
+- **Modular, Scalable Codebase**
+- **Theme Support**
+- **TypeScript for Type Safety**
 
-## Expanding the ESLint configuration
+## Demo
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+> http://github-repo-explorer.s3-website-ap-southeast-2.amazonaws.com/
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Getting Started
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+### Prerequisites
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Node.js (v18+ recommended)
+- npm or yarn
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/your-username/gitHub-explorer.git
+cd gitHub-explorer
+
+# Install dependencies
+npm install
+# or
+yarn install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Running Locally
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
+# or
+yarn dev
 ```
+
+Open [http://localhost:5173](http://localhost:5173) to view the app in your browser.
+
+## Project Structure
+
+```
+src/
+  App.tsx            # Main app component
+  main.tsx           # Entry point
+  router.tsx         # App routing
+  components/        # Shared UI components
+    theme-provider.tsx
+    ui/              # UI primitives from ShadCN (accordion, button, etc.)
+  modules/
+    home/            # Home page module
+      api/           # API calls (search)
+      components/    # Feature-specific components
+      features/      # Feature hooks and logic
+      pages/         # Page components
+      type/          # TypeScript types
+  lib/               # Utilities and helpers
+public/               # Static assets
+```
+
+## Technologies Used
+
+- [React](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vitejs.dev/)
+- [ESLint](https://eslint.org/) (with recommended configs)
+
+## License
+
+This project is licensed under the MIT License.
