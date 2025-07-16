@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { fetchSearchUser } from '../api/search.api'
 import { searchUserParams } from './search.params'
@@ -21,6 +21,17 @@ const useSearch = () => {
   const handleClickButton = () => {
     setKeySearch(inputRef?.current?.value || '')
   }
+
+  const keyListener = () => {
+    document.getElementById('search-input')?.focus()
+  }
+  useEffect(() => {
+    document.addEventListener('keydown', keyListener)
+    return () => {
+      document.removeEventListener('keydown', keyListener)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return {
     getSearchUser,
